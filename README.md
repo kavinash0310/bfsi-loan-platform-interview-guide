@@ -7,8 +7,15 @@ The guide was prepared from a supplied code snapshot and the experience details 
 ## Start here
 
 1. [Architecture and end-to-end flows](docs/architecture.md)
-2. [Project interview Q&A](docs/project-interview-qna.md)
-3. [Personal answer and rehearsal checklist](docs/rehearsal-checklist.md)
+2. [Tech stack and how it works](docs/tech-stack-and-how-it-works.md)
+3. [Project interview Q&A](docs/project-interview-qna.md)
+4. [Personal answer and rehearsal checklist](docs/rehearsal-checklist.md)
+
+## Confirmed technology stack
+
+The supplied service snapshot shows Java 17, Spring Boot 3, REST APIs, MongoDB with Spring Data MongoDB, relational persistence through Spring Data JPA in the admin service, Kafka, Redis, Feign-based HTTP clients, and REST plus GraphQL in reference data. Maven build files, Dockerfiles, GitLab CI configuration, and Actuator/metrics dependencies are also present. The exact relational database vendor, production deployment platform, Kafka delivery settings, and full authentication flow are not established by the snapshot.
+
+See the [tech stack guide](docs/tech-stack-and-how-it-works.md) for what each part does, how they fit together, and focused interview questions.
 
 ## Services represented in the snapshot
 
