@@ -40,9 +40,9 @@ The location orchestrator handles geo-tagging and lookup flows and stores locati
 
 REST is useful when a caller needs a direct response or must validate a request immediately. Kafka is useful when work can continue after the API responds, when services need event-based handoff, or when consumers need to process events independently. The choice depends on the business flow, latency needs, and failure behavior.
 
-### 10. What technologies are visible in the snapshot?
+### 10. What build and packaging evidence appears in the snapshot?
 
-The services use Java 17, Spring Boot, Spring Data, MongoDB and/or relational persistence depending on the module, Redis, Kafka, Feign clients, Actuator/metrics, and Maven. Dockerfiles and CI configuration are also present. I would list only the tools I actually used in my role.
+The services include Maven build files, Dockerfiles, and GitLab CI configuration. That tells me how the code is set up to be built and packaged, but it does not prove a pipeline passed or identify the production deployment platform. The complete technology map and questions about how each component works are in the [tech stack guide](tech-stack-and-how-it-works.md).
 
 ## Medium — explain the request and data flow
 
