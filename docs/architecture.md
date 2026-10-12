@@ -21,6 +21,23 @@ The archive did not include every downstream service or the full runtime environ
 
 The loan-management code also declares clients for customer and lead data, identity/document services, fraud checks, case or overdue data, payments and repayments, sequence generation, reference data, and partner callbacks. Those client interfaces show integration boundaries; they do not prove that every dependency is called on every product path. Describe a specific integration only if you remember the request, response, and your own contribution.
 
+## Technology stack
+
+| Technology | How it appears in this project | What the snapshot does not establish |
+|---|---|---|
+| Java 17 | Language/runtime declared in service build metadata; `CompletableFuture` is used for selected independent work. | Which JVM vendor or production flags were used. |
+| Spring Boot 3 and Spring MVC | Bootstraps the services, wires application components, and exposes REST controllers. | The exact patch versions or every runtime configuration value. |
+| MongoDB and Spring Data MongoDB | Stores loan workflow, loan, disbursement, and repayment documents; the reference-data service also has Mongo repositories. | The production cluster topology, index plan, or why each document boundary was originally chosen. |
+| Relational persistence and Spring Data JPA | Used by the admin service for profiles, roles, and hierarchy data. | The SQL database vendor and its production schema details. |
+| Apache Kafka | Carries selected loan, repayment, employee, CRM, and status events between producers and consumers. | Topic settings, replication/retention choices, producer acknowledgement mode, and consumer offset policy. |
+| Redis | Supports location lookup/geo-tagging records and admin/cache-related behavior. | Whether each Redis key is a cache, a temporary coordination value, or authoritative business state. |
+| Feign-based HTTP clients | Provide synchronous service-to-service calls where an immediate response is needed. | Exact timeout, retry, load-balancing, and authentication settings for every client. |
+| REST and GraphQL | REST is used by service APIs; the reference-data service exposes both REST and GraphQL interfaces. | Which external consumers use each interface in production. |
+| Actuator and metrics | Dependencies and selected workflow counters support health/operational visibility. | Which endpoints were exposed, which metrics backend was configured, or how dashboards and alerts were deployed. |
+| Maven, Docker, and GitLab CI | Maven build metadata, Dockerfiles, and GitLab CI configuration are included. | That a particular pipeline ran successfully or that production used a specific container platform. |
+
+For a component-by-component explanation, request flow, and stack-specific interview questions, see [Tech stack and how it works](tech-stack-and-how-it-works.md). Do not infer a production setup from a dependency or build file alone.
+
 ## High-level picture
 
 ```mermaid
